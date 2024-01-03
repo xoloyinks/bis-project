@@ -17,7 +17,7 @@ export default function SignIn() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   // console.log(auth.currentUser)
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     setIsLoading(!isLoading);
     e.preventDefault();
     try {
@@ -40,7 +40,7 @@ export default function SignIn() {
         // console.log("invalid login");
       }  
       setIsLoading(false);
-    } catch (error) {
+    } catch (error: any) {
       toast({
         variant: "destructive",
         title: "Failed",
@@ -129,7 +129,7 @@ export default function SignIn() {
               </div>
               <Button className="w-full" disabled={isLoading}>
                 {isLoading && (
-                  <div className="mr-2 h-4 w-4 animate-spin">
+                  <div className="w-4 h-4 mr-2 animate-spin">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"

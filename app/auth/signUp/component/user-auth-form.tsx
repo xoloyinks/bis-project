@@ -54,7 +54,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
       }
   
       
-    } catch (error) {
+    } catch (error: any) {
       toast({
         variant: "destructive",
         title: "failed",
@@ -128,7 +128,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
           </div>
           <Button disabled={isLoading}>
             {isLoading && (
-              <div className="mr-2 h-4 w-4 animate-spin">
+              <div className="w-4 h-4 mr-2 animate-spin">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -153,7 +153,7 @@ export function UserAuthForm({ className, ...props }: UserAuthFormProps) {
           <span className="w-full border-t" />
         </div>
         <div className="relative flex justify-center text-xs ">
-          <span className="cursor-pointer bg-background px-2 text-muted-foreground">
+          <span className="px-2 cursor-pointer bg-background text-muted-foreground">
             forgot password?
           </span>
         </div>
