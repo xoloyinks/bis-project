@@ -10,7 +10,6 @@ import swal from 'sweetalert';
 
 
 const ResetPassword = () => {
-
   const router = useRouter();
   const {auth} = useUser();
   const [emailValue, setEmailValue] = useState<string>("");

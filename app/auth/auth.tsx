@@ -62,8 +62,11 @@ export const signIn = async (auth: any, email: string, password: string) => {
   try {
     const result = await signInWithEmailAndPassword(auth, email, password);
     const {currentUser} = auth;
-    window.sessionStorage.setItem('user', JSON.stringify(currentUser));
-    console.log("sucessful");
+    if (typeof window !== 'undefined'){
+      window.sessionStorage.setItem('user', JSON.stringify(currentUser));
+      console.log("sucessful");
+    }
+
     return true;
   } catch (error: any) {
    
