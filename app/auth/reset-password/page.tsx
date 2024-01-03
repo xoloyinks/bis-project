@@ -18,7 +18,7 @@ const ResetPassword = () => {
   const [confirmPasswordValue, setConfirmPasswordValue] = useState<string>("");
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: any) => {
     setIsLoading(!isLoading);
     e.preventDefault();
     console.log("submitted");
@@ -40,7 +40,7 @@ const ResetPassword = () => {
               setIsLoading(false);
       }
 
-    } catch (error) {
+    } catch (error: any) {
       console.log(error.message);
       setIsLoading(false);
     }
