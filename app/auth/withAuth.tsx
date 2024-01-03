@@ -8,11 +8,13 @@ import { useEffect } from "react";
 
 const withAuth = (WrappedComponent: React.ComponentType) => {
 const  AuthenticatedComponent: React.FC = (props) =>{
-
- const storedUser = window.sessionStorage.getItem('user');
-// const {auth} = useUser();
-const currentUser = storedUser;
-const router = useRouter();
+    let currentUser: string | null = null;
+    if (typeof window !== 'undefined'){
+        const storedUser = window.sessionStorage.getItem('user');
+        currentUser = storedUser;
+    }
+    // const {auth} = useUser();
+    const router = useRouter();
 
 
 useEffect(()=>{
