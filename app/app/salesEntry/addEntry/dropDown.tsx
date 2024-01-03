@@ -19,48 +19,33 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 
-// interface Product {
-//     product: string,
-    
-// }
-
 const dummy: string [] =
  [
   
      "next.js",
-    
-  
     "remix.js",
-
      "gastby.js",
-    
-  
      "vue.js",
-    
-  
- 
-
 ]
 
-export function ComboboxDemo({value,setValue}) {
+export function ComboboxDemo({value,setValue}: {value: any, setValue: any}) {
     const {db} = useUser();
   const [open, setOpen] = useState<boolean>(false);
   const [products,setProducts] = useState<string[]>(dummy);
-//   const [value, setValue] = React.useState("")
+
 
 
 useEffect(()=>{
 (async ()=>{
     try {
-let fetchedProducts: Product [] = [];
+let fetchedProducts : any = [];
  const  productsRef = collection(db,"Phones");
 const querySnapshot = await getDocs(productsRef);
 
 querySnapshot.forEach((doc) => {
 fetchedProducts = [...fetchedProducts,doc.id]
-    // console.log(doc.id, " => ", doc.data());
+   
   });
-//   console.log(fetchedProducts)
 setProducts(fetchedProducts)
 
     } catch (error) {
@@ -84,7 +69,7 @@ setProducts(fetchedProducts)
           {value
             ? products.find((item) => item === value)
             : "Select IMEI"}
-          <CaretSortIcon className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          <CaretSortIcon className="w-4 h-4 ml-2 opacity-50 shrink-0" />
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
