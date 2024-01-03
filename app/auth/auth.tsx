@@ -29,18 +29,17 @@ export const createUser = async (
     }
 
   const result = await createUserWithEmailAndPassword(auth, email, password);
-    //  console.log(result)
-    console.log(result)
+  
     const { uid } = result.user;
     if (role === "admin") {
-      result.user.displayName= 'admin';
+      // result.user.displayName= 'admin';
     const setAdmin = await setDoc(docRef, {
         admin: uid,
       });
       // result.user.displayName = "admin";
       console.log("admin is set ");
     }
-    result.user.displayName= 'user';
+    // result.user.displayName= 'user';
     await setDoc(doc(db, "userList", uid), {
       email: email,
       photoURL:
@@ -51,7 +50,7 @@ export const createUser = async (
     console.log("success");
 return true
     
-  } catch (error) {
+  } catch (error:any) {
     console.log(error.message)
     // console.log(error.status)
     return false
@@ -66,7 +65,7 @@ export const signIn = async (auth: any, email: string, password: string) => {
     window.sessionStorage.setItem('user', JSON.stringify(currentUser));
     console.log("sucessful");
     return true;
-  } catch (error) {
+  } catch (error: any) {
    
     console.log(error.message);
    
@@ -83,7 +82,7 @@ export const resetPassword = async (user:any,newPassword:string)=>{
     return true;
 
     
-  } catch (error) {
+  } catch (error: any) {
     console.log(error.messaage)
     return false
   }
