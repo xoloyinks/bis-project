@@ -52,7 +52,7 @@ import { serverTimestamp } from "firebase/firestore";
         });
         toast({
           title: "successful!!",
-          description: `${customerName} has been added to inventory`,
+          description: `${customerName} has successfully Purchased a product`,
         });
       
       setIsLoading(false);

@@ -140,7 +140,7 @@ export default function History() {
                <TabsContent value="completed">
                     {dataCompleted.map((datum, key) => {
                         return(
-                            <div className='py-3 text-md'>
+                            <div key={key} className='py-3 text-md' >
                                 <div className='flex items-center justify-between text-[0.9rem] font-semibold py-2'>
                                     <span>
                                         {datum.productName}
@@ -161,7 +161,7 @@ export default function History() {
                <TabsContent value="pending">
                     {dataPending.map((datum, key) => {
                         return(
-                            <div className='py-3 text-md'>
+                            <div key={key} className='py-3 text-md'>
                                 <div className='flex items-center justify-between text-[0.9rem] font-semibold py-2'>
                                     <span>
                                         {datum.productName}
@@ -182,7 +182,7 @@ export default function History() {
                <TabsContent value="failed">
                     {dateFailed.map((datum, key) => {
                         return(
-                            <div className='py-3 text-md'>
+                            <div key={key} className='py-3 text-md'>
                                 <div className='flex items-center justify-between text-[0.9rem] font-semibold py-2'>
                                     <span>
                                         {datum.productName}

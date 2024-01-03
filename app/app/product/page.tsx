@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import React from 'react'
 import { useState, useEffect } from 'react'
-import { getDocs,collection } from 'firebase/firestore'
+import { getDocs,collection, QueryDocumentSnapshot, DocumentData } from 'firebase/firestore'
 import { FaCross, FaFilter, FaPlus, FaSearch } from 'react-icons/fa'
 import { IoFilterSharp } from 'react-icons/io5'
 import {HiOutlineDocument} from 'react-icons/hi'
@@ -18,6 +18,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
+import { FaNairaSign } from 'react-icons/fa6'
 
 
 interface Phone{
@@ -34,7 +35,7 @@ const dummyData: Phone [] = [
     phoneName: 'IPhone xr',
     brand: 'IPhone',
     IMEI: "89502934980923",
-   RAMSize: 8,
+    RAMSize: 8,
     diskSize: 256, 
     unitPrice: 179000
   },
@@ -42,7 +43,7 @@ const dummyData: Phone [] = [
     phoneName: 'Samsung s10+',
     brand: 'Samsumg',
     IMEI: "54324522345242",
-   RAMSize: 8,
+    RAMSize: 8,
     diskSize: 256, 
     unitPrice: 119000
   },
@@ -50,7 +51,7 @@ const dummyData: Phone [] = [
     phoneName: 'Tecno Spark',
     brand: 'Tecno',
     IMEI: "94892348059234",
-   RAMSize: 8,
+    RAMSize: 8,
     diskSize: 36, 
     unitPrice: 79000
   },
@@ -65,27 +66,23 @@ const {db} = useUser();
 useEffect(()=>{
   (async ()=>{
       try {
-  let fetchedProducts: Phone [] = [];
-   const  phonesRef = collection(db,"Phones");
-  const querySnapshot = await getDocs(phonesRef);
+    let fetchedProducts: Phone[] = [];
+    const  phonesRef = collection(db,"Phones");
+    const querySnapshot = await getDocs(phonesRef);
   
-  querySnapshot.forEach((doc) => {
-  fetchedProducts = [...fetchedProducts,doc.data()]
-      // console.log(doc.id, " => ", doc.data());
+  querySnapshot.forEach((doc:  any) => {
+  fetchedProducts = [...fetchedProducts, doc.data()]
     });
-  //   console.log(fetchedProducts)
   setProducts(fetchedProducts)
-  
       } catch (error) {
           console.log(error)
       }
-      
   })()
   
   }
   ,[])
   
-  const handleSearch = (event) => {
+  const handleSearch = (event: any) => {
     const searchTerm = event.target.value;
     setSearchInput(searchTerm);
 
@@ -166,7 +163,7 @@ useEffect(()=>{
                               <TableCell>{row.IMEI}</TableCell>
                               <TableCell>{`${row.RAMSize}GB`}</TableCell>
                               <TableCell>{`${row.diskSize}GB`}</TableCell>
-                              <TableCell>{`N${row.unitPrice}`}</TableCell>
+                              <TableCell className='flex items-center'><FaNairaSign />{`${row.unitPrice}`}</TableCell>
                               <TableCell className="text-right rounded-r-xl">
                                   <button className='flex items-center gap-1 text-sm'><BiEdit className="text-xl" /> Edit</button>
                               </TableCell>

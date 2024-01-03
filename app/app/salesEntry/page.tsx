@@ -7,7 +7,7 @@ import { FaCross, FaFilter, FaPlus, FaSearch } from "react-icons/fa";
 import { IoFilterSharp } from "react-icons/io5";
 import { HiOutlineDocument } from "react-icons/hi";
 import { useUser } from "@/app/context";
-
+import { FaNairaSign } from "react-icons/fa6";
 import {
   Table,
   TableBody,
@@ -171,7 +171,7 @@ function Sales() {
                       <TableCell>{row.customerNumber}</TableCell>
                       <TableCell>{row.phoneName}</TableCell>
                       <TableCell>{row.IMEI}</TableCell>
-                      <TableCell>{`N${row.unitPrice}`}</TableCell>
+                      <TableCell className="flex items-center gap-1"><FaNairaSign />{`${row.unitPrice}`}</TableCell>
                       <TableCell>{`${new Intl.DateTimeFormat("en-US", {
                         dateStyle: "full",
                       }).format(row.timeStamp)}`}</TableCell>
